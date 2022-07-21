@@ -38,7 +38,7 @@ function search(){
 					addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
 					count++;
 				}
-			document.getElementById("result_count").innerHTML = query+": "+count+"項結果";
+			document.getElementById("result_count").innerHTML = "「"+query+"」: "+count+"項結果";
 		}
 	}
 }
