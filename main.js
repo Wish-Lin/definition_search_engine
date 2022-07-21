@@ -34,7 +34,7 @@ function search(){
 		var tmp = "";
 		for(var i = 0;i<objectList.length;i++){
 				tmp = objectList[i].split("\t"); //tab separated
-				if(tmp[number].search(query) != -1){ //search 
+				if(tmp[number].search(query) != -1){ //match found 
 					addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
 					count++;
 				}
@@ -58,7 +58,7 @@ window.onload = function(){
 		
 		document.getElementById("search").disabled = false; //unfreeze search button
 		
-		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料，感謝大家幫忙整理";
+		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料";
 
 	});
 	}
