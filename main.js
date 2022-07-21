@@ -41,7 +41,7 @@ function search(){
 }
 var objectList = "";
 window.onload = function(){
-	var pswd = prompt("本服務目前僅提供給薇閣高中高三戊同學，請輸入密碼:");
+	var pswd = prompt("本服務目前僅開放給薇閣高中高三戊同學，請輸入密碼:");
 	if(pswd != "erica")
 		location.replace("redirect.html");
 	else{
@@ -52,8 +52,10 @@ window.onload = function(){
 		document.getElementById("stat_display").innerHTML = "擷取完畢。資料處理中，各位同學請稍候...";
 		
 		objectList = data.split("\n");  //load all the data
-
-		document.getElementById("stat_display").innerHTML = "資料處理完畢，目前資料庫中有 "+objectList.length+ " 筆資料，謝謝大家的幫忙";
+		
+		document.getElementById("search").disabled = false; //unfreeze search button
+		
+		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料，感謝大家的幫忙";
 
 	});
 	}
