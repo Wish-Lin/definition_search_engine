@@ -1,7 +1,7 @@
 function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
   // Get a reference to the table
   
-  let newRow = document.getElementById(tableID).insertRow(-1);
+  let newRow = document.getElementById(tableID).insertRow(-1); //bottommost row
 
   // Insert a cell in the row at index 0
   let newCell0 = newRow.insertCell(0);
@@ -22,26 +22,29 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
 }
 
 function search(){
-	//clear previous results
-	while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
-		document.getElementById("search_result").deleteRow(1);
-	}
-	var count = 0;
 	var query = document.getElementById("search_input").value;
-	var number = document.getElementById("search_option").value;
-	var tmp = "";
-	for(var i = 0;i<objectList.length;i++){
-			tmp = objectList[i].split("\t"); //tab separated
-			if(tmp[number] == query){
-				addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
-				count++;
-			}
-		document.getElementById("result_count").innerHTML = count+"個結果";
-	}	
+	if(query != ""){
+		//clear previous search results
+		while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
+			document.getElementById("search_result").deleteRow(1);
+		}
+		var count = 0;
+		
+		var number = document.getElementById("search_option").value;
+		var tmp = "";
+		for(var i = 0;i<objectList.length;i++){
+				tmp = objectList[i].split("\t"); //tab separated
+				if(tmp[number].search(query) != -1){ //search 
+					addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+					count++;
+				}
+			document.getElementById("result_count").innerHTML = query+": "+count+"項結果";
+		}
+	}
 }
 var objectList = "";
 window.onload = function(){
-	var pswd = prompt("本服務目前僅開放給薇閣高中高三戊同學，請輸入密碼:");
+	var pswd = prompt("本服務目前僅開放薇閣高中高三戊同學使用，請輸入密碼:");
 	if(pswd != "erica")
 		location.replace("redirect.html");
 	else{
@@ -55,7 +58,7 @@ window.onload = function(){
 		
 		document.getElementById("search").disabled = false; //unfreeze search button
 		
-		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料，感謝大家的幫忙";
+		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料，感謝大家幫忙整理";
 
 	});
 	}
