@@ -5,12 +5,55 @@
 <title>首頁</title>
 <link rel="icon" href="favicon.png" type="image/png">
 </head>
+<style>
+.generic_button {
+  font-size:15px;
+  font-family:Arial;
+  border-width:2px;
+  color:rgba(0, 0, 0, 1);
+  border-color:rgba(0, 0, 0, 1);
+  font-weight:bold;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+  background:#ffffff;
+}
+
+.generic_button:hover {
+  background: #d3d3d3;
+}
+</style>
 <body style="background-color: #fffff8;">
+
 <script src="main.js"></script>
 
 	<div id="main_title" style="font: bold 30px Arial; text-align: center; background: #2ecc71;">國文形音義搜尋器</div><br>
 	<center><span id = "stat_display" style="font: bold 25px Arial;">資料擷取中，請各位同學稍候...</span><br>
-	<table id = "search_result" border=1px style = " margin-top: 100px;">
+	
+	<div id = "inputzone">
+	<table border=1px style="margin-top: 30px; margin-bottom: 40px;">
+	<tr>
+		<td>
+		<select id="search_option" style="font: bold 16px Arial; width:60px;">
+			<option value = 0 selected >偏旁</option>
+			<option value = 1>形</option>
+			<option value = 2>音</option>
+			<option value = 3>義</option>
+			<option value = 4>例句</option>
+			<option value = 5>出處</option>
+			<option value = 6>備註</option>
+		</select>
+		<input id="search_input" type="text" value='棹' style = "font: bold 16px Arial; width:100px;">
+		</td>
+		<td><button id = "search" class="generic_button" onclick = "search()">搜尋</button></td>
+	</tr>
+	</table>
+	</div>
+	
+	<span id = "result_count" style="font: bold 20px Arial;">0個結果</span>
+	
+	<table id = "search_result" border=1px style = "margin-top: 5px;">
 		<tr>
 		<th>偏旁</th>
 		<th>形</th>
@@ -23,7 +66,7 @@
 	</table><br>
 	
 	
-	<span id = "footer" style="position: fixed; bottom: 0; left: 0;">程式設計: 林韋旭(介面&搜尋器)、邱沐恩(資料庫)<br></span>
+	<span id = "footer" style="position: fixed; bottom: 0; left: 0; text-align: left;">設計耗時: 一個晚上<br>程式設計: 林韋旭(網頁介面&搜尋程式)、邱沐恩(後端資料庫)<br>資料整理: 陳冠維、陳建丞、朱晨曦、陳泓安、王嘉仁等<br>資料提供: 鄭雅文 老師</span>
 	<center>
 </body>
 </html>

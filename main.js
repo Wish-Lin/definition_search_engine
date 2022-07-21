@@ -21,93 +21,40 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
   newCell6.appendChild(document.createTextNode(g));
 }
 
+function search(){
+	//clear previous results
+	while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
+		document.getElementById("search_result").deleteRow(1);
+	}
+	var count = 0;
+	var query = document.getElementById("search_input").value;
+	var number = document.getElementById("search_option").value;
+	var tmp = "";
+	for(var i = 0;i<objectList.length;i++){
+			tmp = objectList[i].split("\t"); //tab separated
+			if(tmp[number] == query){
+				addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+				count++;
+			}
+		document.getElementById("result_count").innerHTML = count+"個結果";
+	}	
+}
+var objectList = "";
 window.onload = function(){
+	var pswd = prompt("本服務目前僅提供給薇閣高中高三戊同學，請輸入密碼:");
+	if(pswd != "erica")
+		location.replace("redirect.html");
+	else{
 	document.getElementById("stat_display").innerHTML = "資料擷取中，各位同學請稍候...";
 	fetch('https://linebot.muen1019.repl.co/file') //fetch data from Muen's database
 	.then(response => response.text())
 	.then(data => {
 		document.getElementById("stat_display").innerHTML = "擷取完畢。資料處理中，各位同學請稍候...";
 		
-		var objectList = data.split("\n");   
-		
-		var pian_pang = new Array(objectList.length);//智障般的變數名稱
-		var shin = new Array(objectList.length);
-		var yin = new Array(objectList.length);
-		var yi = new Array(objectList.length);
-		var liju = new Array(objectList.length);
-		var chuchu = new Array(objectList.length);
-		var beijou = new Array(objectList.length);
-		var tmp = "";
-		for(var i = 0;i<objectList.length;i++){
-			tmp = objectList[i].split("\t"); //tab separated
-			pian_pang[i] = tmp[0];
-			shin[i] = tmp[1];
-			yin[i] = tmp[2];
-			yi[i] = tmp[3];
-			liju[i] = tmp[4];
-			chuchu[i] = tmp[5];
-			beijou[i] = tmp[6];
-		}
-		
-		document.getElementById("stat_display").innerHTML = "資料處理完畢，目前有 "+objectList.length+ " 筆資料";
-		//processing complete, create output table
-		
-		
-		for(var i = 0;i<objectList.length;i++){
-			addRow("search_result",pian_pang[i],shin[i],yin[i],yi[i],liju[i],chuchu[i],beijou[i]);
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*for(var i = 0;i<objectList.length;i++){
-			console.log(pian_pang[i]);
-			console.log(shin[i]);
-			console.log(yin[i]);
-			console.log(yi[i]);
-			console.log(liju[i]);
-			console.log(chuchu[i]);
-			console.log(beijou[i]);
-			console.log("-------------------------------------------");
-		}*/
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		objectList = data.split("\n");  //load all the data
+
+		document.getElementById("stat_display").innerHTML = "資料處理完畢，目前資料庫中有 "+objectList.length+ " 筆資料，謝謝大家的幫忙";
+
 	});
+	}
 }
