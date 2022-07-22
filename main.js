@@ -49,7 +49,7 @@ window.onload = function(){
 		location.replace("redirect.html");
 	else{
 	document.getElementById("stat_display").innerHTML = "資料擷取中，各位同學請稍候...";
-	fetch('https://linebot.muen1019.repl.co/file') //fetch data from Muen's database
+	fetch('https://chinese-definition.muen1019.repl.co/file') //fetch data from Muen's database
 	.then(response => response.text())
 	.then(data => {
 		document.getElementById("stat_display").innerHTML = "擷取完畢。資料處理中，各位同學請稍候...";
