@@ -83,4 +83,9 @@ window.onload = function(){
 		
 		search(); //run example
 	});
+	document.getElementById("search_input").addEventListener("keyup", function(){	
+			if (event.key === "Enter") {
+				search();
+			}
+	});
 }
