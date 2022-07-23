@@ -31,10 +31,25 @@ function change_input_configuration(){
 	}
 }
 function search(){
+	var number = document.getElementById("search_option").value;
 	var query = document.getElementById("search_input").value;
 	if(query != ""){
+		
+		
+		
+		if(number == 0){ //偏旁轉成形
+			for(var i = 0;i<objectList.length;i++){
+				tmp = objectList[i].split("\t"); //tab separated
+				if(tmp[1] == query){ //match found 
+					query = tmp[0];
+					number = 1;
+					break;
+				}
+			}
+		}
+		
 		if(query != "all"){ //非資料檢測模式
-			var number = document.getElementById("search_option").value;
+			
 				//clear previous search results
 				while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
 					document.getElementById("search_result").deleteRow(1);
