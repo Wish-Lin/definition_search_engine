@@ -24,7 +24,7 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
 function search(){
 	var query = document.getElementById("search_input").value;
 	if(query != ""){
-		if(query != "all"){
+		if(query != "all"){ //非資料檢測模式
 			var number = document.getElementById("search_option").value;
 			if(number == 2){ //注音要exact match
 				//clear previous search results
@@ -37,7 +37,7 @@ function search(){
 				var tmp = "";
 				for(var i = 0;i<objectList.length;i++){
 						tmp = objectList[i].split("\t"); //tab separated
-						if(tmp[2] == query){ //match found 
+						if(tmp[2].replace(/[ˊˇˋ]/g,"") == query){ //match found (不看音調)
 							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
 							count++;
 						}
