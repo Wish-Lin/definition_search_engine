@@ -1,4 +1,4 @@
-function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
+function addRow(tableID,a,b,c,d,e,f,g,h) { // https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/insertRow
   // Get a reference to the table
   
   let newRow = document.getElementById(tableID).insertRow(-1); //bottommost row
@@ -11,6 +11,7 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
   let newCell4 = newRow.insertCell(4);
   let newCell5 = newRow.insertCell(5);
   let newCell6 = newRow.insertCell(6);
+  let newCell7 = newRow.insertCell(7);
 
   newCell0.appendChild(document.createTextNode(a));
   newCell1.appendChild(document.createTextNode(b));
@@ -19,6 +20,7 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
   newCell4.appendChild(document.createTextNode(e));
   newCell5.appendChild(document.createTextNode(f));
   newCell6.appendChild(document.createTextNode(g));
+  newCell7.appendChild(document.createTextNode(h));
 }
 function change_input_configuration(){
 	if(document.getElementById("search_option").value == 2){ //bpmf search
@@ -37,12 +39,11 @@ function search(){
 		
 		
 		
-		if(number == 0){ //偏旁轉成形
+		if(number == 0){ //形轉成偏旁
 			for(var i = 0;i<objectList.length;i++){
 				tmp = objectList[i].split("\t"); //tab separated
 				if(tmp[1] == query){ //match found 
 					query = tmp[0];
-					number = 1;
 					break;
 				}
 			}
@@ -56,12 +57,11 @@ function search(){
 				}
 				var count = 0;
 				
-				var number = document.getElementById("search_option").value;
 				var tmp = "";
 				for(var i = 0;i<objectList.length;i++){
 						tmp = objectList[i].split("\t"); //tab separated
 						if(tmp[number].search(query) != -1){ //match found 
-							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6],i+2);
 							count++;
 						}
 				}
@@ -95,7 +95,7 @@ function bpmf_search(){
 			for(var i = 0;i<objectList.length;i++){
 					tmp = objectList[i].split("\t"); //tab separated
 					if(tmp[2] == query1 || tmp[2] == query2 || tmp[2] == query3 || tmp[2] == query4 || tmp[2] == query5){ //contains
-						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6],i+2);
 						count++;
 					}
 			}
@@ -105,7 +105,7 @@ function bpmf_search(){
 			for(var i = 0;i<objectList.length;i++){
 					tmp = objectList[i].split("\t"); //tab separated
 					if(tmp[2] == query){ //exact match
-						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6],i+2);
 						count++;
 					}
 			}
@@ -127,7 +127,7 @@ function print_all(){
 		var tmp = "";
 		for(var i = 0;i<objectList.length;i++){
 				tmp = objectList[i].split("\t"); //tab separated
-				addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+				addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6],i+2);
 				count++;
 		}
 		document.getElementById("result_count").innerHTML = "「"+query+"」: "+count+"項結果";
