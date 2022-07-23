@@ -25,20 +25,40 @@ function search(){
 	var query = document.getElementById("search_input").value;
 	if(query != ""){
 		if(query != "all"){
-			//clear previous search results
-			while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
-				document.getElementById("search_result").deleteRow(1);
-			}
-			var count = 0;
-			
 			var number = document.getElementById("search_option").value;
-			var tmp = "";
-			for(var i = 0;i<objectList.length;i++){
-					tmp = objectList[i].split("\t"); //tab separated
-					if(tmp[number].search(query) != -1){ //match found 
-						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
-						count++;
-					}
+			if(number == 2){ //注音要exact match
+				//clear previous search results
+				while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
+					document.getElementById("search_result").deleteRow(1);
+				}
+				var count = 0;
+				
+				var number = document.getElementById("search_option").value;
+				var tmp = "";
+				for(var i = 0;i<objectList.length;i++){
+						tmp = objectList[i].split("\t"); //tab separated
+						if(tmp[2] == query){ //match found 
+							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+							count++;
+						}
+				}
+			}
+			else{
+				//clear previous search results
+				while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
+					document.getElementById("search_result").deleteRow(1);
+				}
+				var count = 0;
+				
+				var number = document.getElementById("search_option").value;
+				var tmp = "";
+				for(var i = 0;i<objectList.length;i++){
+						tmp = objectList[i].split("\t"); //tab separated
+						if(tmp[number].search(query) != -1){ //match found 
+							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+							count++;
+						}
+				}
 			}
 			document.getElementById("result_count").innerHTML = "「"+query+"」: "+count+"項結果";
 		}
