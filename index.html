@@ -33,6 +33,20 @@ body {
   background-position: right top;
 }
 </style>
+<script>
+var phrase_list = 
+[
+'Komm, süsser Tod',
+'「戀愛」就是科學與邏輯永遠無法解釋的程序',
+'Physics is like Sex. Sure, it may give some practical results, but that\'s not why we do it. -- Richard Feynman',
+'夢是現實的延續，現實是夢的終結',
+];
+
+window.onload = function(){
+	document.getElementById("phrase").innerHTML = phrase_list[Math.floor(3*Math.random()+0.5)];
+}
+
+</script>
 <body style="background-color: #fffff8;">
 
 	<div id="main_title" style="font: bold 30px Arial; text-align: center; background: #c2914c;">高三戊國文線上資料庫</div><br>
@@ -42,7 +56,8 @@ body {
 		<hr><br>
 		<span style = "font-family: 'Lucida Handwriting', cursive; background: #a8ffb2;">"Grau, teurer Freund, ist alle Theorie, und grün des Lebens goldner Baum"</span><br><br>
 		<span style = "font: bold 20px Arial; background: #a8ffb2;">理論是灰色的，而生命之樹常青 -- 浮士德</span><br><br>
-        <div style="font: bold 15px Arial;">概念構思: 陳冠維、林韋旭<br>程式設計: 林韋旭(網頁設計/架設&搜尋程式)、邱沐恩(後端資料庫)<br>資料整理: 陳冠維、陳建丞、陳泓安、王嘉仁等同學們<br>資料提供: 鄭雅文 老師及同學們<br>背景提供: 王羲之 先生<br>特別感謝: 陳慧芳 老師</div>
+        <div style="font: bold 15px Arial;">概念構思: 陳冠維、林韋旭<br>程式設計: 林韋旭(網頁設計/架設&搜尋程式)、邱沐恩(後端資料庫)<br>資料整理: 陳冠維、陳建丞、陳泓安、王嘉仁等同學們<br>資料提供: 鄭雅文 老師及同學們<br>背景提供: 王羲之 先生<br>特別感謝: 陳慧芳 老師</div><br><br>
+		<span id = "phrase" style = "font: bold 15px Arial"></span>
 	</center>
 </body>
 </html>
