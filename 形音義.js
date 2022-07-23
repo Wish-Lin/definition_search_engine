@@ -69,11 +69,10 @@ function print_all(){
 
 var objectList = "";
 window.onload = function(){
-	document.getElementById("stat_display").innerHTML = "資料擷取中，各位同學請稍候...";
+	document.getElementById("stat_display").innerHTML = "正在連線至資料庫，各位同學請稍候...";
 	fetch('https://chinese-definition.muen1019.repl.co/file') //fetch data from Muen's database
 	.then(response => response.text())
 	.then(data => {
-		document.getElementById("stat_display").innerHTML = "擷取完畢。資料處理中，各位同學請稍候...";
 		
 		objectList = data.split("\n");  //load all the data
 		
