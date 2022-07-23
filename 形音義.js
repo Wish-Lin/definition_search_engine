@@ -75,9 +75,11 @@ function bpmf_search(){
 			var query2 = query+"ˊ";
 			var query3 = query+"ˇ";
 			var query4 = query+"ˋ";
+			var query5 = query+"˙";
+			query += "*";
 			for(var i = 0;i<objectList.length;i++){
 					tmp = objectList[i].split("\t"); //tab separated
-					if(tmp[2] == query1 || tmp[2] == query2 || tmp[2] == query3 || tmp[2] == query4){ //contains
+					if(tmp[2] == query1 || tmp[2] == query2 || tmp[2] == query3 || tmp[2] == query4 || tmp[2] == query5){ //contains
 						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
 						count++;
 					}
