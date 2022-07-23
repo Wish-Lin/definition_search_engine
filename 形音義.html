@@ -47,7 +47,7 @@ body {
 	<table border=1px style="margin-top: 30px; margin-bottom: 40px;">
 	<tr>
 		<td>
-		<select id="search_option" style="font: bold 16px Arial; width:80px;">
+		<select id="search_option" style="font: bold 16px Arial; width:80px;" onchange = "change_input_configuration()">
 			<option value = 0 selected >偏旁</option>
 			<option value = 1>形</option>
 			<option value = 2>音</option>
@@ -57,10 +57,72 @@ body {
 			<option value = 6>備註</option>
 		</select>
 		</td>
+		
 		<td>
+		
+		<span id = "basic_inputzone" style = "display: inline">
 		<input id="search_input" type="text" value='曷' style = "font: bold 16px Arial; width:100px;">
-		</td>
-		<td><button id = "search" class="generic_button" onclick = "search()" disabled>搜尋</button></td>
+		<button id = "search" class="generic_button" onclick = "search()" disabled>搜尋</button>
+		</span>
+		
+		
+		<span id = "bpmf_inputzone" style = "display: none">
+		<select id="bpmf_1" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄅ</option>
+			<option>ㄆ</option>
+			<option>ㄇ</option>
+			<option>ㄈ</option>
+			<option>ㄉ</option>
+			<option>ㄊ</option>
+			<option>ㄋ</option>
+			<option>ㄌ</option>
+			<option>ㄍ</option>
+			<option>ㄎ</option>
+			<option>ㄏ</option>
+			<option>ㄐ</option>
+			<option>ㄑ</option>
+			<option>ㄒ</option>
+			<option selected>ㄓ</option>
+			<option>ㄔ</option>
+			<option>ㄕ</option>
+			<option>ㄖ</option>
+			<option>ㄗ</option>
+			<option>ㄘ</option>
+			<option>ㄙ</option>
+		</select>
+		<select id="bpmf_2" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄧ</option>
+			<option selected>ㄨ</option>
+			<option>ㄩ</option>
+		</select>
+		<select id="bpmf_3" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄚ</option>
+			<option selected>ㄛ</option>
+			<option>ㄜ</option>
+			<option>ㄝ</option>
+			<option>ㄞ</option>
+			<option>ㄟ</option>
+			<option>ㄠ</option>
+			<option>ㄡ</option>
+			<option>ㄢ</option>
+			<option>ㄣ</option>
+			<option>ㄤ</option>
+			<option>ㄥ</option>
+			<option>ㄦ</option>
+		</select>
+		<select id="bpmf_4" style="font: bold 16px Arial; width:40px;">
+			<option selected>*</option>
+			<option></option>
+			<option>ˊ</option>
+			<option>ˇ</option>
+			<option>ˋ</option>
+		</select>
+		<button id = "bpmf_search" class="generic_button" onclick = "bpmf_search()" disabled>搜尋</button>
+		</span>
+	</td>
 	</tr>
 	</table>
 	</div>

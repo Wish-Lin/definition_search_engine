@@ -20,30 +20,21 @@ function addRow(tableID,a,b,c,d,e,f,g) { // https://developer.mozilla.org/en-US/
   newCell5.appendChild(document.createTextNode(f));
   newCell6.appendChild(document.createTextNode(g));
 }
-
+function change_input_configuration(){
+	if(document.getElementById("search_option").value == 2){ //bpmf search
+		document.getElementById("bpmf_inputzone").style.display = "inline";
+		document.getElementById("basic_inputzone").style.display = "none";
+	}
+	else{
+		document.getElementById("basic_inputzone").style.display = "inline";
+		document.getElementById("bpmf_inputzone").style.display = "none";		
+	}
+}
 function search(){
 	var query = document.getElementById("search_input").value;
 	if(query != ""){
 		if(query != "all"){ //非資料檢測模式
 			var number = document.getElementById("search_option").value;
-			if(number == 2){ //注音要exact match
-				//clear previous search results
-				while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
-					document.getElementById("search_result").deleteRow(1);
-				}
-				var count = 0;
-				
-				var number = document.getElementById("search_option").value;
-				var tmp = "";
-				for(var i = 0;i<objectList.length;i++){
-						tmp = objectList[i].split("\t"); //tab separated
-						if(tmp[2].replace(/[ˊˇˋ]/g,"") == query){ //match found (不看音調)
-							addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
-							count++;
-						}
-				}
-			}
-			else{
 				//clear previous search results
 				while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
 					document.getElementById("search_result").deleteRow(1);
@@ -59,7 +50,6 @@ function search(){
 							count++;
 						}
 				}
-			}
 			document.getElementById("result_count").innerHTML = "「"+query+"」: "+count+"項結果";
 		}
 		else{
@@ -67,6 +57,46 @@ function search(){
 		}
 	}
 }
+
+function bpmf_search(){
+	var query = document.getElementById("bpmf_1").value+document.getElementById("bpmf_2").value+document.getElementById("bpmf_3").value;
+
+		//clear previous search results
+		while(document.getElementById("search_result").rows.length > 1) { //delete everything except the first row.
+			document.getElementById("search_result").deleteRow(1);
+		}
+		var count = 0;
+		
+		var number = document.getElementById("search_option").value;
+		var tmp = "";
+		
+		if(document.getElementById("bpmf_4").value == "*"){
+			var query1 = query;
+			var query2 = query+"ˊ";
+			var query3 = query+"ˇ";
+			var query4 = query+"ˋ";
+			for(var i = 0;i<objectList.length;i++){
+					tmp = objectList[i].split("\t"); //tab separated
+					if(tmp[2] == query1 || tmp[2] == query2 || tmp[2] == query3 || tmp[2] == query4){ //contains
+						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+						count++;
+					}
+			}
+		}
+		else{
+			query += document.getElementById("bpmf_4").value;
+			for(var i = 0;i<objectList.length;i++){
+					tmp = objectList[i].split("\t"); //tab separated
+					if(tmp[2] == query){ //exact match
+						addRow("search_result",tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5],tmp[6]);
+						count++;
+					}
+			}
+		}
+		
+	document.getElementById("result_count").innerHTML = "「"+query+"」: "+count+"項結果";
+}
+
 function print_all(){
 	var query = document.getElementById("search_input").value;
 	if(query != ""){
@@ -97,6 +127,7 @@ window.onload = function(){
 		objectList = data.split("\n");  //load all the data
 		
 		document.getElementById("search").disabled = false; //unfreeze search button
+		document.getElementById("bpmf_search").disabled = false; //unfreeze bpmf_search button
 		
 		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料";
 		
