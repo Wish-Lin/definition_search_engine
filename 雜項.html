@@ -43,13 +43,15 @@ body {
 	<center>
 	<span id = "stat_display" style="font: bold 25px Arial;">資料擷取中，請各位同學稍候...</span><br>
 	
-	<div id = "inputzone" style="margin-bottom: 40px; margin-top: 40px;">
+	<table border=1px style="margin-top: 30px; margin-bottom: 40px;"><tr><td>
+	<div id = "inputzone">
 		<span id = "basic_inputzone" style = "display: inline">
 		關鍵字:
 		<input id="search_input" type="text" value='人稱' style = "font: bold 16px Arial; width:100px;">
 		<button id = "search" class="generic_button" onclick = "search()" disabled>搜尋</button>
 		</span>
 	</div>
+	</td></tr></table>
 	
 	<span id = "result_count" style="font: bold 20px Arial;"></span>
 	
