@@ -143,7 +143,7 @@ var objectList = "";
 
 window.onload = function(){
 	document.getElementById("stat_display").innerHTML = "正在連線至資料庫，各位同學請稍候...";
-	fetch('https://chinese-definition.muen1019.repl.co/file') //fetch data from Muen's database
+	fetch('https://Chinese-project.muen1019.repl.co/形音義') //fetch data from Muen's database
 	.then(response => response.text())
 	.then(data => {
 		
