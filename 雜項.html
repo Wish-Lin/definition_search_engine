@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>高三戊國文線上資料庫--雜項</title>
+<link rel="icon" href="favicon.png" type="image/png">
+</head>
+<style>
+.generic_button {
+  font-size:15px;
+  font-family:Arial;
+  border-width:2px;
+  color:rgba(0, 0, 0, 1);
+  border-color:rgba(0, 0, 0, 1);
+  font-weight:bold;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+  background:#ffffff;
+}
+
+.generic_button:hover {
+  background: #d3d3d3;
+}
+
+.generic_button:disabled {
+  background: #e7e7e7;
+  color: #6e6e6e;
+}
+body {
+  background-image: url('background.png');
+  background-position: right top;
+}
+</style>
+<body style="background-color: #fffff8;">
+
+<script src="雜項.js"></script>
+
+	<div id="main_title" style="font: bold 30px Arial; text-align: center; background: #c2914c;">高三戊國文線上資料庫--雜項</div><br>
+	<a href="index.html" style="font: bold 20px Arial">←回首頁</a>
+	<a style = "font: bold 20px Arial; text-align: right; float: right;" href="https://docs.google.com/spreadsheets/d/1amME1DtKOTYaDSan-0KMUrBo_73CTiFHtPIlU_4mduA/edit#gid=1790599836" target="_blank" style="font: bold 20px Arial">前往資料庫</a><br>
+	<center>
+	<span id = "stat_display" style="font: bold 25px Arial;">資料擷取中，請各位同學稍候...</span><br>
+	
+	<div id = "inputzone" style="margin-bottom: 40px; margin-top: 40px;">
+		<span id = "basic_inputzone" style = "display: inline">
+		關鍵字:
+		<input id="search_input" type="text" value='敬詞' style = "font: bold 16px Arial; width:100px;">
+		<button id = "search" class="generic_button" onclick = "search()" disabled>搜尋</button>
+		</span>
+	</div>
+	
+	<span id = "result_count" style="font: bold 20px Arial;"></span>
+	
+	<table id = "search_result" border=1px style = "margin-top: 5px; margin-bottom: 20px; background: #fffff8;">
+		<tr>
+		<th>關鍵字</th>
+		<th style="width: 600px;">資料</th>
+		</tr>
+	</table>
+	</center>
+</body>
+</html>
