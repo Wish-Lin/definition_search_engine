@@ -45,7 +45,7 @@ var objectList = "";
 
 window.onload = function(){
 	document.getElementById("stat_display").innerHTML = "正在連線至資料庫，各位同學請稍候...";
-	fetch('https://Chinese-project.muen1019.repl.co/雜項') //fetch data from Muen's database
+	fetch('https://script.google.com/macros/s/AKfycbzZIlbBIIPUo5FGjgWPK4ZOZAuutgeko7TMcE9CNzZITMm8UsWbYMXp6rHArqJpnk8emw/exec?sheetName=雜項') //fetch data from Muen's database
 	.then(response => response.text())
 	.then(data => {
 		
