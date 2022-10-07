@@ -3,6 +3,8 @@ var display;
 var qc = "";
 var wrong = 0;
 var right = 0;
+var start = 2;
+var end = 3533;
 
 function grading(){
 	var answer = document.getElementById("bpmf_1").value+document.getElementById("bpmf_2").value+document.getElementById("bpmf_3").value+document.getElementById("bpmf_4").value;
@@ -19,14 +21,19 @@ function grading(){
 }
 
 function disp_problem(){
-	qc = objectList[Math.floor(3533*Math.random()+0.5)].split("\t");
+	qc = objectList[Math.floor((end-start)*Math.random()+0.5+start)-2].split("\t");
 	while(qc[1] == "" || qc[4] == ""){
-		qc = objectList[Math.floor(3533*Math.random()+0.5)].split("\t");
+		qc = objectList[Math.floor((end-start)*Math.random()+0.5+start)-2].split("\t");
 	}
 		display.item(0).innerHTML = qc[1];
 		display.item(1).innerHTML = "????";
 		display.item(2).innerHTML = qc[3];
 		display.item(3).innerHTML = qc[4];
+}
+
+function setrange(){
+	start = parseInt(document.getElementById("start").value);
+	end = parseInt(document.getElementById("end").value);
 }
 
 window.onload = function(){

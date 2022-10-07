@@ -39,6 +39,7 @@ body {
 
 	<div id="main_title" style="font: bold 30px Arial; text-align: center; background: #c2914c;">高三戊國文線上資料庫--形音義練習</div><br>
 	<a href="index.html" style="font: bold 20px Arial">←回首頁</a>
+	<a style = "font: bold 20px Arial; text-align: right; float: right;" href="https://docs.google.com/spreadsheets/d/1amME1DtKOTYaDSan-0KMUrBo_73CTiFHtPIlU_4mduA/edit#gid=0" target="_blank" style="font: bold 20px Arial">前往資料庫</a><br>
 	<center>
 	<span id = "stat_display" style="font: bold 25px Arial;">資料擷取中，請各位同學稍候...</span><br><br>
 	
@@ -122,6 +123,9 @@ body {
 	</td>
 	</tr>
 	</table>
+	
+	範圍: <input id="start" type="number" value='2' max = 3533 min = 2 style = "font: bold 16px Arial; width:50px;"> ~ <input id="end" type="number" value='3533' max = 3533 min = 2 style = "font: bold 16px Arial; width:50px;">
+	<button id = "setrange" class="generic_button" onclick = "setrange()">設定</button>
 	
 	</center>
 </body>
