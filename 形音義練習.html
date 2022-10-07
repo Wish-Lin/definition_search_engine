@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>高三戊國文線上資料庫--形音義練習</title>
+<link rel="icon" href="favicon.png" type="image/png">
+</head>
+<style>
+.generic_button {
+  font-size:15px;
+  font-family:Arial;
+  border-width:2px;
+  color:rgba(0, 0, 0, 1);
+  border-color:rgba(0, 0, 0, 1);
+  font-weight:bold;
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  border-bottom-left-radius:8px;
+  border-bottom-right-radius:8px;
+  background:#ffffff;
+}
+
+.generic_button:hover {
+  background: #d3d3d3;
+}
+
+.generic_button:disabled {
+  background: #e7e7e7;
+  color: #6e6e6e;
+}
+body {
+  background-image: url('background.png');
+  background-position: right top;
+}
+</style>
+<body style="background-color: #fffff8;">
+
+<script src="形音義練習.js"></script>
+
+	<div id="main_title" style="font: bold 30px Arial; text-align: center; background: #c2914c;">高三戊國文線上資料庫--形音義練習</div><br>
+	<a href="index.html" style="font: bold 20px Arial">←回首頁</a>
+	<center>
+	<span id = "stat_display" style="font: bold 25px Arial;">資料擷取中，請各位同學稍候...</span><br><br>
+	
+	<table id = "question" border=1px style = "margin-top: 5px; margin-bottom: 20px; background: #fffff8;">
+		<tr>
+			<th style="width: 40px;">形</th>
+			<th style="width: 70px;">音</th>
+			<th style="width: 120px;">義</th>
+			<th style="width: 350px;">例詞/句</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td><center></center></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<span id = "right" style="font: bold 80px Arial; color: green">0</span><span style="font: bold 80px Arial; color: black">/</span><span id = "wrong" style="font: bold 80px Arial; color: red">0</span>
+
+	<table border=1px style="margin-top: 30px; margin-bottom: 40px;">
+	<tr>
+		<td>
+		
+		<span id = "bpmf_inputzone">
+		<select id="bpmf_1" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄅ</option>
+			<option>ㄆ</option>
+			<option>ㄇ</option>
+			<option>ㄈ</option>
+			<option>ㄉ</option>
+			<option>ㄊ</option>
+			<option>ㄋ</option>
+			<option>ㄌ</option>
+			<option>ㄍ</option>
+			<option>ㄎ</option>
+			<option>ㄏ</option>
+			<option>ㄐ</option>
+			<option>ㄑ</option>
+			<option>ㄒ</option>
+			<option selected>ㄓ</option>
+			<option>ㄔ</option>
+			<option>ㄕ</option>
+			<option>ㄖ</option>
+			<option>ㄗ</option>
+			<option>ㄘ</option>
+			<option>ㄙ</option>
+		</select>
+		<select id="bpmf_2" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄧ</option>
+			<option selected>ㄨ</option>
+			<option>ㄩ</option>
+		</select>
+		<select id="bpmf_3" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option>ㄚ</option>
+			<option selected>ㄛ</option>
+			<option>ㄜ</option>
+			<option>ㄝ</option>
+			<option>ㄞ</option>
+			<option>ㄟ</option>
+			<option>ㄠ</option>
+			<option>ㄡ</option>
+			<option>ㄢ</option>
+			<option>ㄣ</option>
+			<option>ㄤ</option>
+			<option>ㄥ</option>
+			<option>ㄦ</option>
+		</select>
+		<select id="bpmf_4" style="font: bold 16px Arial; width:40px;">
+			<option></option>
+			<option selected>ˊ</option>
+			<option>ˇ</option>
+			<option>ˋ</option>
+			<option>˙</option>
+		</select>
+		<button id = "bpmf_search" class="generic_button" onclick = "grading()" disabled>作答</button>
+		</span>
+	</td>
+	</tr>
+	</table>
+	
+	</center>
+</body>
+</html>
