@@ -15,6 +15,7 @@ function grading(){
 	else{
 		wrong++;
 		document.getElementById("wrong").innerHTML = wrong;
+		alert("正確答案: "+qc[2]);
 	}
 	
 	disp_problem();
@@ -26,7 +27,7 @@ function disp_problem(){
 		qc = objectList[Math.floor((end-start)*Math.random()+0.5+start)-2].split("\t");
 	}
 		display.item(0).innerHTML = qc[1];
-		display.item(1).innerHTML = "????";
+		display.item(1).innerHTML = "<center>????</center>";
 		display.item(2).innerHTML = qc[3];
 		display.item(3).innerHTML = qc[4];
 }
