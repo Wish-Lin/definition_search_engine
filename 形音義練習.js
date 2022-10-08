@@ -4,7 +4,7 @@ var qc = "";
 var wrong = 0;
 var right = 0;
 var start = 2;
-var end = 3533;
+var end = 0; //dynamic
 
 function grading(){
 	var answer = document.getElementById("bpmf_1").value+document.getElementById("bpmf_2").value+document.getElementById("bpmf_3").value+document.getElementById("bpmf_4").value;
@@ -46,6 +46,7 @@ window.onload = function(){
 		objectList = data.split("\n");  //load all the data
 		display = document.getElementById("question").rows.item(1).cells;
 		qc = objectList[Math.floor(3533*Math.random()+0.5)].split("\t");
+		end = objectList.length;
 		
 		document.getElementById("stat_display").innerHTML = "資料處理完畢。目前資料庫中有 "+objectList.length+ " 筆資料";
 		
